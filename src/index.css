@@ -15,53 +15,47 @@
     --popover: 207 60% 11%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 110 100% 54%;
-    --primary-foreground: 207 60% 11%;
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 21 90% 48%;
 
-    --secondary: 0 0% 100%;
-    --secondary-foreground: 207 60% 11%;
+    --secondary: 215 26% 27%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 214 20% 50%;
-    --muted-foreground: 214 20% 63%;
+    --muted-foreground: 214 20% 70%;
 
-    --accent: 110 100% 54%;
-    --accent-foreground: 207 60% 11%;
+    --accent: 25 95% 53%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 110 100% 54%;
+    --border: 215 26% 27%;
     --input: 207 30% 20%;
-    --ring: 110 100% 54%;
+    --ring: 25 95% 53%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 207 60% 11%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 110 100% 54%;
-    --sidebar-primary-foreground: 207 60% 11%;
-    --sidebar-accent: 207 40% 16%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 110 100% 54%;
-    --sidebar-ring: 110 100% 54%;
-
-    /* Custom tokens */
-    --neon: 110 100% 54%;
-    --neon-glow: 0 0 25px rgba(57, 255, 20, 0.4);
-    --neon-glow-sm: 0 0 15px rgba(57, 255, 20, 0.25);
     --navy: 207 60% 11%;
     --navy-light: 207 40% 16%;
-    --card-surface: rgba(255, 255, 255, 0.02);
-    --card-border: rgba(255, 255, 255, 0.05);
-    --card-inset: inset 0 1px 1px rgba(255, 255, 255, 0.05);
-    --glass-bg: rgba(11, 30, 45, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.05);
+    --slate: 215 26% 27%;
+    --light-gray: 210 40% 96%;
+
+    --sidebar-background: 207 60% 11%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 25 95% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 207 40% 16%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 215 26% 27%;
+    --sidebar-ring: 25 95% 53%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border/15;
+    @apply border-border/20;
   }
 
   html {
@@ -84,38 +78,40 @@
 
 @layer components {
   .glass-header {
-    background: var(--glass-bg);
-    border-bottom: 1px solid var(--glass-border);
+    background: hsla(207, 60%, 11%, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
 
   .card-surface {
-    background: var(--card-surface);
-    border: 1px solid var(--card-border);
-    box-shadow: var(--card-inset);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   }
 
   .card-surface-hover {
-    @apply card-surface transition-colors duration-200;
+    @apply card-surface transition-all duration-200;
   }
 
   .card-surface-hover:hover {
-    border-color: rgba(57, 255, 20, 0.3);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
   .neon-button {
     @apply bg-primary text-primary-foreground px-8 py-4 rounded-xl font-bold 
            transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.25);
   }
   .neon-button:hover {
-    box-shadow: var(--neon-glow);
+    background: hsl(21, 90%, 48%);
+    box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
   }
 
   .outline-button {
-    @apply border border-primary/30 text-primary px-8 py-4 rounded-xl font-bold
-           transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98];
+    @apply border border-foreground/20 text-foreground px-8 py-4 rounded-xl font-bold
+           transition-all duration-200 hover:bg-foreground/5 hover:border-foreground/30 hover:scale-[1.02] active:scale-[0.98];
   }
 
   .ghost-button {
@@ -133,17 +129,15 @@
 
   .pulse-dot {
     @apply w-2 h-2 rounded-full bg-primary;
-    animation: pulse-neon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
 
-@keyframes pulse-neon {
+@keyframes pulse-dot {
   0%, 100% {
     opacity: 1;
-    box-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
   }
   50% {
-    opacity: 0.6;
-    box-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
+    opacity: 0.5;
   }
 }
