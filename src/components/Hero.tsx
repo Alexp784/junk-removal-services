@@ -10,12 +10,10 @@ const Hero = () => {
     <section id="hero" className="relative min-h-screen flex items-center pt-20">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=2000&q=80')",
-          }}
+        <img
+          src={heroBg}
+          alt="Junk removal truck in Tampa at sunset"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/80 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 to-transparent" />
